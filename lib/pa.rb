@@ -6,8 +6,10 @@ require "table_print"
 
 module Pa
   class Client
-    def initialize(uri, username, password, http_client: HTTP, jumpbox: nil, jumpbox_user: nil, remote_host: nil, remote_port: 443)
-      @uri = URI(uri)
+    def initialize(host:, username:, password:, port:, scheme: "https", http_client: HTTP, jumpbox: nil, jumpbox_user: nil, remote_host: nil, remote_port: 443)
+      @host = host
+      @port = port.to_i
+      @scheme = scheme
       @username = username
       @password = password
       @http_client = http_client
@@ -67,18 +69,10 @@ module Pa
 
     private
 
-    attr_reader :uri, :username, :password, :http_client, :cookie_jar, :ccsrftoken_value, :ssh_gateway, :remote_host, :remote_port
-
-    def host
-      uri.host
-    end
+    attr_reader :host, :scheme, :username, :password, :http_client, :cookie_jar, :ccsrftoken_value, :ssh_gateway, :remote_host, :remote_port
 
     def local_port
-      uri.port
-    end
-
-    def scheme
-      uri.scheme
+      @port
     end
 
     def http_cookie
