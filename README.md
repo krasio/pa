@@ -27,8 +27,8 @@ If you can reach your FortiOS device directly just provide host, port, username 
 ```ruby
 # See examples/addresses.rb
 require "bundler/setup"
-require "pa"
 require "table_print"
+require "pa"
 
 client = Pa::Client.new(
   host: "localhost",
@@ -47,7 +47,7 @@ You can also use SSH tunnel, `pa` is using [net-ssh/net-ssh-gateway](https://git
 ```ruby
 # See examples/ssh_tunnel.rb
 require "bundler/setup"
-require "net/ssh/gateway"
+require "table_print"
 require "pa"
 
 client = Pa::Client.new(
