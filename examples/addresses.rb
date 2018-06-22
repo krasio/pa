@@ -1,10 +1,13 @@
 require "bundler/setup"
 require "pa"
+require "table_print"
 
 username = ENV.fetch("FORTIOS_USERNAME")
 password = ENV.fetch("FORTIOS_PASSWORD")
-host = ENV.fetch("FORTIOS_HOST", "localhost:9000")
+host = ENV.fetch("FORTIOS_HOST", "https://localhost:9000")
 
 client = Pa::Client.new(host, username, password)
 
-puts client.addresses
+tp client.addresses, "name", "subnet", "type", "start-ip", "end-ip", "fqdn"
+
+client.close

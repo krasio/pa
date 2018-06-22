@@ -3,6 +3,7 @@ PATH
   specs:
     pa (0.1.0)
       http (~> 3.3)
+      net-ssh-gateway (~> 2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -22,6 +23,9 @@ GEM
       domain_name (~> 0.5)
     http-form_data (2.1.1)
     http_parser.rb (0.6.0)
+    net-ssh (5.0.2)
+    net-ssh-gateway (2.0.0)
+      net-ssh (>= 4.0.0)
     public_suffix (3.0.2)
     rake (10.4.2)
     rspec (3.7.0)
@@ -37,6 +41,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
+    table_print (1.5.6)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
@@ -50,6 +55,7 @@ DEPENDENCIES
   pa!
   rake (~> 10.0)
   rspec (~> 3.5)
+  table_print
 
 BUNDLED WITH
    1.16.1

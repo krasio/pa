@@ -31,9 +31,11 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "http", "~> 3.3"
+  spec.add_dependency "net-ssh-gateway", "~> 2.0"
 
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "rspec", "~> 3.5"
+  spec.add_development_dependency "table_print"
 end
