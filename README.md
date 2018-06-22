@@ -1,15 +1,15 @@
-# Pa
+# Pā
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pa`. To experiment with that code, run `bin/console` for an interactive prompt.
+> (noun) fortified village, fort, stockade, screen, blockade, city (especially a fortified one).
 
-TODO: Delete this and the text above, and describe your gem
+FortiOS client written in Ruby.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'pa'
+gem "pa"
 ```
 
 And then execute:
@@ -22,7 +22,49 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+If you can reach your FortiOS device directly just provide host, port, username and password.
+
+```ruby
+# See examples/addresses.rb
+require "bundler/setup"
+require "pa"
+require "table_print"
+
+client = Pa::Client.new(
+  host: "localhost",
+  port: 9000,
+  username: "admin",
+  password: "secret"
+)
+
+tp client.addresses, "name", "subnet", "type", "start-ip", "end-ip", "fqdn"
+
+client.close
+```
+
+You can also use SSH tunnel, `pa` is using [net-ssh/net-ssh-gateway](https://github.com/net-ssh/net-ssh-gateway) under the hood. You need to provide jumpbox, ssh user, remote host and port. 
+
+```ruby
+# See examples/ssh_tunnel.rb
+require "bundler/setup"
+require "net/ssh/gateway"
+require "pa"
+
+client = Pa::Client.new(
+  host: "localhost",
+  port: 9001,
+  username: "admin",
+  password: "secret",
+  jumpbox: "jumpbox.example.com",
+  jumpbox_user: `whoami`.chomp,
+  remote_host: "fw.example.com",
+  remote_port: 443
+)
+
+tp client.addresses, "name", "subnet", "type", "start-ip", "end-ip", "fqdn"
+
+client.close
+```
 
 ## Development
 
