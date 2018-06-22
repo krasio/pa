@@ -1,6 +1,4 @@
 require "bundler/setup"
-require "net/ssh/gateway"
-require "byebug"
 require "pa"
 
 username = ENV.fetch("FORTIOS_USERNAME")

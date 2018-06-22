@@ -1,4 +1,5 @@
 require "http"
+require "net/ssh/gateway"
 require "pa/version"
 require "pa/error"
 require "pa/null_ssh_gateway"
